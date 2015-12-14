@@ -14,12 +14,12 @@
 	<script type="text/javascript" src="js/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/js.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/card_payment_form.css" />	
+	<link rel="stylesheet" type="text/css" href="css/card_payment_form.css" />
 	<script type="text/javascript" src="js/jquery.card_payment_form.js"></script>
 	<!--/Здесь сохраняем адресацию до файла-->
-	
-	<!--Здесь ваши собственные стили и скрипты. Все ваши файлы должны находиться только в папке {{customization_merchant_id}}-->
-	<!--<link rel="stylesheet" type="text/css" href="merchant_templates/{{customization_merchant_id}}/css/your_css.css"></link>-->
+
+	<!--Здесь ваши собственные стили и скрипты. Все ваши файлы должны находиться только в папке {{merchant_id}}-->
+	<!--<link rel="stylesheet" type="text/css" href="merchant_templates/{{merchant_id}}/css/your_css.css"></link>-->
 	<!--JavaScript запрещен для использования в ваших шаблонах. Все что необходимо кастомизировать в JavaScript шаблона, необходимо закладывать в замыкания при инициализаци card_payment_form плагина-->
 	<!--/Здесь ваши собственные стили и скрипты. Если их нет - удалить блок-->
 	<script type="text/javascript">
@@ -28,20 +28,20 @@
 /*
  * При написании шаблона сохроаняем все условные позиции (блоков <!--...-->),
  * и имена маркеров ({{...}})
- */ 
+ */
 		$('div#card_input_form').card_payment_form({
 /*
  * Тип инициализируемой формы
  */
-			'form_type' : 'card_form',											
-			
+			'form_type' : 'card_form',
+
 /*
  * Здесь так и оставляем, используется, для определения принимаемых типов карт
  * Для того, что бы работали проверки раскомментируйти 1ую строку
  * и закоментируйте 2ую строки
  * Перед отдачей в Platron, вернуть меркеры наместо
- */ 
-//			'accepted_card_brands' : ['{{accepted_card_brands}}'],					
+ */
+//			'accepted_card_brands' : ['{{accepted_card_brands}}'],
 			'accepted_card_brands' : ['VISA','MASTERCARD'],
 			'ok_seter': {
 				form : function (data, text, forms, fields, validators, settings, ok_setter, error_setter, nothing_setter) {
@@ -53,24 +53,24 @@
 				'card_num_fields' : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {
 					console.log('card_num_fields: status ok');
 					fields.card_num_fields.each(function(i) {
-						$(this).removeClass("field-error").addClass("field-ok");	
-					});	
+						$(this).removeClass("field-error").addClass("field-ok");
+					});
 				},
 				'card_num' : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {
 					console.log('card_num: status ok');
 					fields.card_num.addClass("field-ok").removeClass("field-error");
 				}
-				
+
 /*
  * Используются выставления состояния в полях, когда они правильно заполены
- * 
+ *
  * card_num_fields - В форме, где несколько полей для ввода номера карты, для полей под ввод номера
  * card_num - В форме, где одно поле для ввода номера карты, для полей под ввод номера
  * exp_date_fields - В форме, где несколько полей для ввода даны истечения срока действия карты, для полей под ввод даты
  * exp_date - В форме, где одно поле для ввода даны истечения срока действия карты, для полей под ввод даты
  * name_on_card - Поле для ввода имени карты
  * card_cvc - Поле для ввода cvc/cvv2
- * 
+ *
 				,
 				'exp_date_fields' : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
 				'exp_date' : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
@@ -89,7 +89,7 @@
 				'card_num_fields' : function (fields, validators, settings, ok_setter, error_setter, nothing_setter) {
 					console.log('card_num_fields: status error');
 					fields.card_num_fields.each(function(i) {
-						$(this).removeClass("field-ok").addClass("field-error");	
+						$(this).removeClass("field-ok").addClass("field-error");
 					});
 				},
 				'card_num' : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {
@@ -97,10 +97,10 @@
 					alert('Ошибка в номере карты');
 					fields.card_num.removeClass("field-ok").addClass("field-error");
 				}
-				
+
 /*
  * Используются выставления состояния в полях, когда они не правильно заполены
- * 
+ *
  * form - ошибки самой формы
  * card_num_fields - В форме, где несколько полей для ввода номера карты, для полей под ввод номера
  * card_num - В форме, где одно поле для ввода номера карты, для полей под ввод номера
@@ -108,7 +108,7 @@
  * exp_date - В форме, где одно поле для ввода даны истечения срока действия карты, для полей под ввод даты
  * name_on_card - Поле для ввода имени карты
  * card_cvc - Поле для ввода cvc/cvv2
- * 
+ *
 				,
 				exp_date_fields : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
 				exp_date : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
@@ -133,56 +133,56 @@
 					console.log('card_num: status nothing');
 					fields.card_num.removeClass("field-ok").removeClass("field-error");
 				},
-				
+
 /*
  * Используются выставления состояния в полях, когда они не заполнены
- * 
+ *
  * card_num_fields - В форме, где несколько полей для ввода номера карты, для полей под ввод номера
  * card_num - В форме, где одно поле для ввода номера карты, для полей под ввод номера
  * exp_date_fields - В форме, где несколько полей для ввода даны истечения срока действия карты, для полей под ввод даты
  * exp_date - В форме, где одно поле для ввода даны истечения срока действия карты, для полей под ввод даты
  * name_on_card - Поле для ввода имени карты
  * card_cvc - Поле для ввода cvc/cvv2
- * 
+ *
 				,
 				exp_date : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
 				name_on_card : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
 				card_cvc : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {}
 */
 			},
-			'handlers' : {															
+			'handlers' : {
 				'card_num_fields': function(fields, validators, settings, ok_setter, error_setter, nothing_setter) {
 					this.value = this.value.replace(/[^0-9]/g, "");
 
 					var cardNum = '';
 					fields.card_num_fields.each(function(i) {
-						cardNum += $(this).val();	
+						cardNum += $(this).val();
 					});
 
 					if(cardNum.length >= settings.min_card_number_length && cardNum.length <= settings.max_card_number_length)
-						if(validators.card_num( cardNum , settings)) ok_setter.card_num_fields.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);	
-						else error_setter.card_num_fields.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);					
+						if(validators.card_num( cardNum , settings)) ok_setter.card_num_fields.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);
+						else error_setter.card_num_fields.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);
 					else nothing_setter.card_num_fields.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);
 				},
 				'card_num': function(fields, validators, settings, ok_setter, error_setter, nothing_setter) {
 					var value = this.value = this.value.replace(/[^0-9 -]/g, "");
 
 					if(value.length >= settings.min_card_number_length && value.length <= settings.max_card_number_length)
-						if(validators.card_num( value , settings)) ok_setter.card_num.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);	
+						if(validators.card_num( value , settings)) ok_setter.card_num.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);
 						else error_setter.card_num.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);
-					else 
+					else
 						nothing_setter.card_num.apply(this, [fields, validators, settings, ok_setter, error_setter, nothing_setter]);
 				},
 /*
  * Срабатывают по событию keyip
- * 
+ *
  * card_num_fields - В форме, где несколько полей для ввода номера карты, для полей под ввод номера
  * card_num - В форме, где одно поле для ввода номера карты, для полей под ввод номера
  * exp_date_fields - В форме, где несколько полей для ввода даны истечения срока действия карты, для полей под ввод даты
  * exp_date - В форме, где одно поле для ввода даны истечения срока действия карты, для полей под ввод даты
  * name_on_card - Поле для ввода имени карты
  * card_cvc - Поле для ввода cvc/cvv2
- * 
+ *
 				,
 				exp_date_fields : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
 				exp_date : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
@@ -190,32 +190,32 @@
 				card_cvc : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {}
 */
 			},
-			'validators' : {		
+			'validators' : {
 				'card_num': function( cardNumber, settings) {
 					// accept only spaces, digits and dashes
-					if (/[^0-9 -]+/.test(cardNumber))		
+					if (/[^0-9 -]+/.test(cardNumber))
 						return false;
 
-					cardNumber = cardNumber.replace(/\D/g, "");			
+					cardNumber = cardNumber.replace(/\D/g, "");
 					if(cardNumber.length < settings.min_card_number_length || cardNumber.length >  settings.max_card_number_length)
 						return false;
 
 					return true;
-				},				
+				},
 /*
  * Валидаторы данных полей
- * 
+ *
  * card_num - В форме, где одно поле для ввода номера карты, для полей под ввод номера
  * exp_date - В форме, где одно поле для ввода даны истечения срока действия карты, для полей под ввод даты
  * name_on_card - Поле для ввода имени карты
  * card_cvc - Поле для ввода cvc/cvv2
- * 
+ *
 				,
 				exp_date_fields : function (fields, validators, settings, ok_seter, error_seter, nothing_seter) {},
 				exp_date : function (strExpDate, settings) {},
 				name_on_card : function (strNameOnCard, settings) {},
 				card_cvc : function (strCardCvc, settings) {}
-*/	
+*/
 			},
 		});
 	});
@@ -227,9 +227,9 @@
 
 		<div class="wizard">
 			<div class="wizard-step1">
-				
+
 				<!--- --->
-			
+
 				<h1>Оплата банковской картой</h1>
 				<p>&nbsp;</p>
 
@@ -237,8 +237,8 @@
 					<form method="POST">
 						<h3>Вы оплачиваете:</h3>
 						<div class="wiz-block">{{description}}</div>
-						<h3>Стоимость заказа:</h3>	
-						
+						<h3>Стоимость заказа:</h3>
+
 				<!--WITH_GDS_ONLY-->
 						<div class="wiz-block">
 							Сумма счета {{amount_whithout_commission}} {{currency}}<br />
@@ -263,7 +263,7 @@
 										<p>&nbsp;</p>
 									</td>
 									<td>
-										<p><img src="images/cart-visa.png" alt="" /></p>
+										<p><img src="images/card-visa.png" alt="" /></p>
 									</td>
 									<!--/ACCEPTED_CARD_BRAND_VISA-->
 									<!--ACCEPTED_CARD_BRAND_MASTERCARD-->
@@ -271,7 +271,7 @@
 										<p>&nbsp;</p>
 									</td>
 									<td>
-										<p><img src="images/cart-master.png" alt="" /></p>
+										<p><img src="images/card-master.png" alt="" /></p>
 									</td>
 									<!--/ACCEPTED_CARD_BRAND_MASTERCARD-->
 									<!--ACCEPTED_CARD_BRAND_AMEX-->
@@ -279,7 +279,7 @@
 										<p>&nbsp;</p>
 									</td>
 									<td>
-										<p><img src="images/cart-americanex.png" alt="" /></p>
+										<p><img src="images/card-americanex.png" alt="" /></p>
 									</td>
 									<!--/ACCEPTED_CARD_BRAND_AMEX-->
 									<!--ACCEPTED_CARD_BRAND_DINERS-->
@@ -287,7 +287,7 @@
 										<p>&nbsp;</p>
 									</td>
 									<td>
-										<p><img src="images/cart-master.png" alt="" /></p>
+										<p><img src="images/card-master.png" alt="" /></p>
 									</td>
 									<!--/ACCEPTED_CARD_BRAND_DINERS-->
 									<!--ACCEPTED_CARD_BRAND_JCB-->
@@ -295,7 +295,7 @@
 										<p>&nbsp;</p>
 									</td>
 									<td>
-										<p><img src="/images/card-jcb.png" alt="" /></p>
+										<p><img src="images/card-jcb.png" alt="" /></p>
 									</td>
 									<!--/ACCEPTED_CARD_BRAND_JCB-->
 								</tr>
@@ -306,7 +306,7 @@
 							<p><input type="text" class="card-num" id="card_num_2" name="card_num_2"  maxlength=4 autocomplete="off"/></p>
 							<p><input type="text" class="card-num" id="card_num_3" name="card_num_3"  maxlength=4 autocomplete="off"/></p>
 							<p><input type="text" class="card-num" id="card_num_4" name="card_num_4"  maxlength=7 autocomplete="off"/></p>
-							
+
 							<div class="card-title">Укажите срок действия карты</div>
 							<p><select class="card-date" name="exp_month">
 								<option value="">M</option>
@@ -365,9 +365,9 @@
 					</form>
 				</div>
 				<div class="c"></div>
-				
+
 				<!--- --->
-				
+
 				<div class="push"></div>
 			</div><!--end .main -->
 		</div>
