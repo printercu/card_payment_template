@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    / ВНИМАНИЕ! Перед отправкой на проверку из файлов необходимо удалить
+    / все комментарии, весь код для отладки (console.log, и т.д.),
+    / а также все неиспользуемые блоки кода
+    / Slim не рендерит комментарии, начинающиеся с /, их можно не удалять.
+    /
+    / При написании шаблона сохроаняем все условные позиции (блоков /-- --),
+    / и имена маркеров ({{...}})
+    meta content='text/html; charset=utf-8' http-equiv='Content-Type'
+    title= t('title')
+    / Здесь сохраняем адресацию до файла. www файл назван, чтобы было понятно,
+    / что его надо положить в www вашего домена. чтобы пути правильно работали
+    link href='css/style.css' rel='stylesheet' type='text/css'
+    link href='css/ministyle.css' rel='stylesheet' type='text/css'
+    link href='css/jquery-ui.css' rel='stylesheet' type='text/css'
+    script src='js/jquery.js' type='text/javascript'
+    script src='js/jquery-ui.js' type='text/javascript'
+    script src='js/js.js' type='text/javascript'
+    link href='css/card_payment_form.css' rel='stylesheet' type='text/css'
+    script src='js/jquery.card_payment_form.js' type='text/javascript'
+
+    / Здесь ваши собственные стили и скрипты.
+    / Все ваши файлы должны находиться только в папке {{merchant_id}}
+    / link rel='stylesheet' type='text/css' href='merchant_templates/{{merchant_id}}/css/your_css.css'
+    / JavaScript запрещен для использования в ваших шаблонах.
+    / Все что необходимо кастомизировать в JavaScript шаблона,
+    / необходимо закладывать в замыкания при инициализаци card_payment_form плагина.
+
+    javascript:
+      $(document).ready(function() {
+        $('div#card_input_form').card_payment_form({
+          'form_type' : 'loader_form'
+        });
+      });
+  <body {{_onload}}>
+    .main: .wizard: .wizard-step1
+      /-- --
+      h1= t('header')
+      #waiter_form
+        #info_by_idle_transaction
+          p &nbsp;
+          p align='center' = t('please_wait')
+          p &nbsp;
+          p#spiner align='center'
+            img src='images/spin.gif'
+        #info_by_hold_transaction
+          p &nbsp;
+          p align='center' = t('delay_description')
+      .c
+      /-- --
+      .push
+  </body>

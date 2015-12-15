@@ -1,0 +1,44 @@
+release:
+  host: http://domain.com
+dev:
+  host: http://localhost:3000
+# gds: true
+
+slim:
+  pretty: true
+default_locale: ru
+
+i18n:
+  en:
+    title: >
+      Platron - universal system for online payments.
+      Online payment system for internet shops. ::  Pay with bank card
+  ru:
+    agent_fee: Агентский сбор
+    amount: Стоимость заказа
+    bill_amount: Стоимость заказа
+    card_number_error: Ошибка в номере карты
+    cardholder: ИМЯ И ФАМИЛИЯ ВЛАДЕЛЬЦА КАРТЫ латиницей
+    delay_description: Обработка платежа задерживается по неизвестным причинам,
+      просим отслеживать статус платежа в личном кабинете магазина
+      или обратиться в службу поддержки.
+    exp_date: Укажите срок действия карты
+    form_config_error: Неправельные натройки формы
+    gds_warning: >
+      Внимание! Стоимость билета и сумма агентского сбора будут списаны с
+      вашей банковской карты в два этапа!'
+    gds_why: Почему так?
+    header: Оплата банковской картой
+    month_placeholder: M
+    pay: Оплатить
+    please_wait: >
+      Дождитесь завершения операции оплаты по банковской карте.
+      По окончанию вы будете перенаправлены на сайт магазина, где завершите процесс покупки.
+    total: Итого
+    title: >
+      Платрон - универсальная система приема платежей на сайте.
+      Система электронных платежей для интернет магазинов. ::
+      Оплата с банковской картой
+    what_is_it: Что это?
+    year_placeholder: Г
+    you_pay: Вы оплачиваете
