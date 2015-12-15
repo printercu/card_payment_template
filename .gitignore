@@ -2,4 +2,6 @@
 Gemfile.lock
 www/secure_entry.html
 www/waiter.html
+# dont track compiled templates, we track src
+www/merchant_templates/*/*/*.html
 archive.zip
