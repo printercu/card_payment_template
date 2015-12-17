@@ -9,7 +9,10 @@ html
     / При написании шаблона сохроаняем все условные позиции (блоков /-- --),
     / и имена маркеров ({{...}})
     meta content='text/html; charset=utf-8' http-equiv='Content-Type'
+    meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'
+
     title= t('title')
+
     / Здесь сохраняем адресацию до файла. www файл назван, чтобы было понятно,
     / что его надо положить в www вашего домена. чтобы пути правильно работали
     link href='css/style.css' rel='stylesheet' type='text/css'
@@ -23,7 +26,7 @@ html
 
     / Здесь ваши собственные стили и скрипты.
     / Все ваши файлы должны находиться только в папке {{merchant_id}}
-    / link rel='stylesheet' type='text/css' href=css_path('your_css.css')
+    link rel='stylesheet' type='text/css' href=css_path('your_css.css')
     / JavaScript запрещен для использования в ваших шаблонах.
     / Все что необходимо кастомизировать в JavaScript шаблона,
     / необходимо закладывать в замыкания при инициализаци card_payment_form плагина.
@@ -35,20 +38,18 @@ html
         });
       });
   <body {{_onload}}>
-    .main: .wizard: .wizard-step1
-      /-- --
+    .navbar.navbar-inverse.navbar-static-top: .container-fluid
+      .navbar-brand: a href='/'
+        img src=image_path('cafebike_logo.svg')
+      ul.nav.nav-header.navbar-nav.pull-left
+        li: a.close href='javascript:history.back()' &times;
+
+    .flex-expandable.bg-blue: .container: .row: .col-center
       h1= t('header')
       #waiter_form
         #info_by_idle_transaction
-          p &nbsp;
-          p align='center' = t('please_wait')
-          p &nbsp;
-          p#spiner align='center'
-            img src='images/spin.gif'
+          p= t('please_wait')
+          p#spiner.text-center: img src='images/spin.gif'
         #info_by_hold_transaction
-          p &nbsp;
-          p align='center' = t('delay_description')
-      .c
-      /-- --
-      .push
+          p= t('delay_description')
   </body>

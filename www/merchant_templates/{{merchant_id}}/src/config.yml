@@ -9,35 +9,44 @@ default_locale: ru
 
 i18n:
   en:
-    title: >
-      Platron - universal system for online payments.
-      Online payment system for internet shops. ::  Pay with bank card
-  ru:
-    agent_fee: Агентский сбор
-    amount: Стоимость заказа
-    bill_amount: Стоимость заказа
-    card_number_error: Ошибка в номере карты
-    cardholder: ИМЯ И ФАМИЛИЯ ВЛАДЕЛЬЦА КАРТЫ латиницей
-    delay_description: Обработка платежа задерживается по неизвестным причинам,
-      просим отслеживать статус платежа в личном кабинете магазина
-      или обратиться в службу поддержки.
-    exp_date: Укажите срок действия карты
-    form_config_error: Неправельные натройки формы
-    gds_warning: >
-      Внимание! Стоимость билета и сумма агентского сбора будут списаны с
-      вашей банковской карты в два этапа!'
-    gds_why: Почему так?
-    header: Оплата банковской картой
+    bill_amount: Amount to pay
+    card_number: Card number
+    card_number_error: Invalid card number
+    cardholder: Cardholder
+    cardholder_placeholder: Name Lastname
+    delay_description: Payment is delayed for unknown reason, please track payment status
+      on Cafebike account page or contact support.
+    disclaimer: Cafebike does not store card information.
+      Secure payment service is provided by Platron.
+    exp_date: Valid thru
+    form_caption: Fill in bank card information
+    form_config_error: Invalid form settings
+    header: Payment information
     month_placeholder: M
-    pay: Оплатить
+    pay: Proceed
+    payment_description: Payment is performed after paid ride according to rates.
+    please_wait: Please wait till payment is complete. You will be redirected back to Cafebike.
+    title: 'Platron :: Pay with bank card'
+    year_placeholder: Y
+  ru:
+    bill_amount: Сумма к оплате
+    card_number: Номер карты
+    card_number_error: Ошибка в номере карты
+    cardholder: Имя
+    cardholder_placeholder: Имя Фамилия (латиницей)
+    delay_description: Обработка платежа задерживается по неизвестным причинам,
+      просим отслеживать статус платежа в личном кабинете Cafebike или обратиться в службу поддержки.
+    disclaimer: Cafebike не хранит данные бынковских карт.
+      Безопасный сервис платежей предоставлен Платрон
+    exp_date: Срок действия
+    form_caption: Введите данные банковской карты
+    form_config_error: Неправельные натройки формы
+    header: Платежные данные
+    month_placeholder: M
+    pay: Продолжить
+    payment_description: Оплата списывается после завершения платной поездки в соответствие с тарифом.
     please_wait: >
       Дождитесь завершения операции оплаты по банковской карте.
-      По окончанию вы будете перенаправлены на сайт магазина, где завершите процесс покупки.
-    total: Итого
-    title: >
-      Платрон - универсальная система приема платежей на сайте.
-      Система электронных платежей для интернет магазинов. ::
-      Оплата с банковской картой
-    what_is_it: Что это?
+      По окончанию вы будете перенаправлены на сайт Cafedike.
+    title: 'Платрон :: Оплата с банковской картой'
     year_placeholder: Г
-    you_pay: Вы оплачиваете

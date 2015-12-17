@@ -9,12 +9,12 @@ html
     / При написании шаблона сохроаняем все условные позиции (блоков /-- --),
     / и имена маркеров ({{...}})
     meta content='text/html; charset=utf-8' http-equiv='Content-Type'
+    meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'
+
     title= t('title')
 
     / Здесь сохраняем адресацию до файла. www файл назван, чтобы было понятно,
     / что его надо положить в www вашего домена. чтобы пути правильно работали
-    link href='css/style.css' rel='stylesheet' type='text/css'
-    link href='css/ministyle.css' rel='stylesheet' type='text/css'
     link href='css/jquery-ui.css' rel='stylesheet' type='text/css'
     script src='js/jquery.js' type='text/javascript'
     script src='js/jquery-ui.js' type='text/javascript'
@@ -24,7 +24,7 @@ html
 
     / Здесь ваши собственные стили и скрипты.
     / Все ваши файлы должны находиться только в папке {{merchant_id}}
-    / link rel='stylesheet' type='text/css' href=css_path('your_css.css')
+    link rel='stylesheet' type='text/css' href=css_path('your_css.css')
     / JavaScript запрещен для использования в ваших шаблонах.
     / Все что необходимо кастомизировать в JavaScript шаблона,
     / необходимо закладывать в замыкания при инициализаци card_payment_form плагина.
@@ -206,97 +206,55 @@ html
         });
       });
   <body {{_onload}}>
-    .main: .wizard: .wizard-step1
+    .navbar.navbar-inverse.navbar-static-top: .container-fluid
+      .navbar-brand: a href='/'
+        img src=image_path('cafebike_logo.svg')
+      ul.nav.nav-header.navbar-nav.pull-left
+        li: a.close href='javascript:history.back()' &times;
+
+    .flex-expandable.bg-blue: .container: .row: .col-center
       /-- --
       h1= t('header')
-      p &nbsp;
       #card_input_form
         form method='POST'
-          h3 #{t('you_pay')}:
-          .wiz-block
-           | {{description}}
-          h3 #{t('amount')}:
-          - if options.gds
-            <!--WITH_GDS_ONLY-->
-            .wiz-block
-              => t('bill_amount')
-              | {{amount_whithout_commission}} {{currency}}
-              br
-              => t('agent_fee')
-              | {{markup}} {{currency}}
-              br
-              .wiz-block-all
-                => t('total')
-                | {{amount_to_pay}} {{currency}}
-            .alert
-              => t('gds_warning')
-              | (
-              a href='/info/gds_russian_standart_why_paid_in_two_stages/ru/mini' target='_blank'
-                = t('gds_why')
-              | )
-            p &nbsp;
-            <!--/WITH_GDS_ONLY-->
-          - else
-            <!--WITHOUT_GDS_ONLY-->
-            .wiz-block: .wiz-block-all
-              => t('bill_amount')
-              | {{amount_to_pay}} {{currency}}
-            p &nbsp;
-            <!--/WITHOUT_GDS_ONLY-->
+          p
+            | {{description}}
+          <!--WITHOUT_GDS_ONLY-->
+          p
+            = t('bill_amount')
+            | : {{amount_to_pay}} {{currency}}
+          <!--/WITHOUT_GDS_ONLY-->
 
-          /-- error --
           <!--_error-->
-          p.alert: b
+          .alert.alert-danger
             | {{_error}}
           <!--/_error-->
-          .card-left
-            br
-            table.card-left-table: tr
-              - { \
-                VISA:        :visa,
-                MASTERCARD:  :master,
-                AMEX:        :americanex,
-                DINERS:      :master,
-                JCB:         :jcb,
-              }.each do |type, img|
-                <!--ACCEPTED_CARD_BRAND_#{type}-->
-                td: p &nbsp;
-                td: p: img alt='' src="images/card-#{img}.png"
-                <!--/ACCEPTED_CARD_BRAND_#{type}-->
-            br
-            - (1..4).each do |i|
-              p: input.card-num id="card_num_#{i}" autocomplete='off' maxlength='4' name="card_num_#{i}" type='text'
-            .card-title= t('exp_date')
-            p: select.card-date name='exp_month'
-              option value='' = t('month_placeholder')
-              - if release?
-                | {{select exp_month}}
-              - else
-                - (1..12).each do |i|
-                  - i = format('%02d', i)
-                  option.dimmed value=i = i
-            p: select.card-date name='exp_year'
-              option value='' = t('year_placeholder')
-              - if release?
-                | {{select exp_year}}
-              - else
-                - (2013..2023).each do |i|
-                  option.dimmed value=i = i
-            .card-title= t('cardholder')
-            p: input.card-fio name='name_on_card' type='text'
-          .card-right
-            .card-right-line align='center' &nbsp;
-            table.card-right-table
-              tr
-                td
-                td CVV/CVC
-              tr
-                td: a href='/info/cvc_and_batch/ru/mini' target='_blank' = t('what_is_it')
-                td: p: input.card-cvc autocomplete='off' name='card_cvc' type='text'
-                / value='{{card_cvc}}'
-          .c
-          p: input.pay type='submit' value=t('pay')
-          br
-      .c
-      .push
+          p= t('form_caption')
+          .well.well-card
+            .form-group.row
+              label.col-xs-4 for='card_num_1' = t('card_number')
+              - (1..4).each do |i|
+                input.form-control.col-xs-2(id="card_num_#{i}" name="card_num_#{i}"
+                  autocomplete="off" maxlength=4 type="text" placeholder='0000')
+            .form-group.row
+              label.col-xs-4 for='exp_month' = t('exp_date')
+              input.form-control.col-xs-2(type='text' name='exp_month'
+                autocomplete="off" maxlength=2 placeholder=(t('month_placeholder') * 2))
+              input.form-control.col-xs-2(type='text' name='exp_year'
+                autocomplete="off" maxlength=4 placeholder=(t('year_placeholder') * 4))
+              label.col-xs-2.text-center for='card_cvc' CVV
+              input.form-control.col-xs-2(name='card_cvc' type='text' maxlength=3
+                autocomplete="off" placeholder="---")
+              / value='{{card_cvc}}'
+            .form-group.row
+              label.col-xs-4 for='name_on_card' = t('cardholder')
+              input.form-control.col-xs-8(name='name_on_card' type='text'
+                placeholder=t('cardholder_placeholder'))
+          .form-group
+            button.btn.btn-primary.form-control type='submit' = t('pay')
+          p.text-center= t('payment_description')
+    .bg-blue.padding-top: .container: .row: .col-center
+      .row: .col-xs-4.col-xs-offset-4
+        img.img-responsive src=image_path('platron.png')
+      p.text-center.small= t('disclaimer')
   </body>
