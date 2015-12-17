@@ -1,11 +1,10 @@
-release:
-  host: http://domain.com
+# release:
+#   smth: val
 dev:
-  host: http://localhost:3000
+  slim:
+    pretty: true
 # gds: true
 
-slim:
-  pretty: true
 default_locale: ru
 
 i18n:

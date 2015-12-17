@@ -31,6 +31,13 @@ task ln: :env do
   dir.symlink(ENV['locale'] || 'ru')
 end
 
+desc 'Pack templates into zip archive'
+task :zip do
+  cmd = 'zip -FSr archive.zip www \
+    -x \*src/* www/*.html \*.DS_Store \*.gitkeep \*Thumbs.db'
+  puts system(cmd)
+end
+
 task default: :dev
 
 def render(env)
@@ -81,10 +88,10 @@ module TemplateProcessor
     # Load config from src/config.yml.
     def template_options
       @template_options ||= begin
-        hash = {env: env.to_s.inquiry, i18n: {}}
+        hash = {env: env.to_s.inquiry, i18n: {}, merchant_id: path.basename}
         yml_path = path.join('src', 'config.yml')
         hash.merge!(YAML.load_file(yml_path).symbolize_keys) if File.exist?(yml_path)
-        hash.merge!(hash[env].symbolize_keys || {})
+        hash.merge!(hash[env].try!(:symbolize_keys) || {})
       end
     end
   end
@@ -125,12 +132,20 @@ module TemplateProcessor
   end
 
   class Context < Struct.new(:options, :locale)
-    delegate :env, :i18n, to: :options
+    delegate :env, :i18n, :merchant_id, to: :options
     delegate :release?, to: :env
 
     # Simple translator.
     def t(key)
       i18n[locale][key] || i18n[options.default_locale][key] || key
+    end
+
+    def css_path(path)
+      "merchant_templates/#{merchant_id}/your_css/#{path}"
+    end
+
+    def image_path(path)
+      "merchant_templates/#{merchant_id}/your_images/#{path}"
     end
   end
 end

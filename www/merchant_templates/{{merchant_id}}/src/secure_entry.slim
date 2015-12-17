@@ -24,7 +24,7 @@ html
 
     / Здесь ваши собственные стили и скрипты.
     / Все ваши файлы должны находиться только в папке {{merchant_id}}
-    / link rel='stylesheet' type='text/css' href='merchant_templates/{{merchant_id}}/css/your_css.css'
+    / link rel='stylesheet' type='text/css' href=css_path('your_css.css')
     / JavaScript запрещен для использования в ваших шаблонах.
     / Все что необходимо кастомизировать в JavaScript шаблона,
     / необходимо закладывать в замыкания при инициализаци card_payment_form плагина.
@@ -217,7 +217,7 @@ html
            | {{description}}
           h3 #{t('amount')}:
           - if options.gds
-            /-- WITH_GDS_ONLY --
+            <!--WITH_GDS_ONLY-->
             .wiz-block
               => t('bill_amount')
               | {{amount_whithout_commission}} {{currency}}
@@ -235,23 +235,34 @@ html
                 = t('gds_why')
               | )
             p &nbsp;
+            <!--/WITH_GDS_ONLY-->
           - else
-            /-- WITHOUT_GDS --
+            <!--WITHOUT_GDS_ONLY-->
             .wiz-block: .wiz-block-all
               => t('bill_amount')
               | {{amount_to_pay}} {{currency}}
             p &nbsp;
+            <!--/WITHOUT_GDS_ONLY-->
 
           /-- error --
+          <!--_error-->
           p.alert: b
             | {{_error}}
+          <!--/_error-->
           .card-left
             br
             table.card-left-table: tr
-              /-- Accepted cards --
-              - %w(visa master americanex master jcb).each do |type|
+              - { \
+                VISA:        :visa,
+                MASTERCARD:  :master,
+                AMEX:        :americanex,
+                DINERS:      :master,
+                JCB:         :jcb,
+              }.each do |type, img|
+                <!--ACCEPTED_CARD_BRAND_#{type}-->
                 td: p &nbsp;
-                td: p: img alt='' src="images/card-#{type}.png"
+                td: p: img alt='' src="images/card-#{img}.png"
+                <!--/ACCEPTED_CARD_BRAND_#{type}-->
             br
             - (1..4).each do |i|
               p: input.card-num id="card_num_#{i}" autocomplete='off' maxlength='4' name="card_num_#{i}" type='text'
