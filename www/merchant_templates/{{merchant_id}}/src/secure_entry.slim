@@ -35,6 +35,18 @@ html
           #{{'console.log.apply(console, arguments);' unless release?}}
         }
 
+        var card_inputs = $('[name^="card_num"]');
+        card_inputs.focus(function(e) {
+          for (var i = 0; i < card_inputs.length; i += 1) {
+            var input = card_inputs[i];
+            if (input == e.target) return;
+            if (input.value.length < 4) {
+              input.focus();
+              return;
+            }
+          }
+        });
+
         $('div#card_input_form').card_payment_form({
 
           // Тип инициализируемой формы
@@ -234,14 +246,15 @@ html
             .form-group.row
               label.col-xs-4 for='card_num_1' = t('card_number')
               - (1..4).each do |i|
+                - max_length = i == 4 ? 7 : 4 # Last input is larger
                 input.form-control.col-xs-2(id="card_num_#{i}" name="card_num_#{i}"
-                  autocomplete="off" maxlength=4 type="text" placeholder='0000')
+                  autocomplete="off" maxlength=max_length type="text" placeholder='0000')
             .form-group.row
               label.col-xs-4 for='exp_month' = t('exp_date')
               input.form-control.col-xs-2(type='text' name='exp_month'
                 autocomplete="off" maxlength=2 placeholder=(t('month_placeholder') * 2))
               input.form-control.col-xs-2(type='text' name='exp_year'
-                autocomplete="off" maxlength=4 placeholder=(t('year_placeholder') * 4))
+                autocomplete="off" maxlength=2 placeholder=(t('year_placeholder') * 2))
               label.col-xs-2.text-center for='card_cvc' CVV
               input.form-control.col-xs-2(name='card_cvc' type='text' maxlength=3
                 autocomplete="off" placeholder="---")
