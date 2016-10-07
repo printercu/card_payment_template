@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    meta http-equiv='Content-Type' content='text/html; charset=utf-8'
+    title
+      = t('title')
+      |  :: {{_title}}
+
+    link rel='stylesheet' media='all' href='/css/payment_params.css'
+    / link rel='stylesheet' media='all' href=css_path('your.css')
+
+    script type='text/javascript' src='/js/jquery.js'
+    script type='text/javascript' src='/js/jquery-ui.js'
+    script type='text/javascript' src='/js/jquery.payment_form.js'
+    script type='text/javascript' src='/js/header.js'
+
+    <!--ANALYTICS-->
+    script type='text/javascript' src='/js/google_analytics.js'
+    script type='text/javascript' src='/js/vk_analytics.js'
+    <!--/ANALYTICS-->
+
+  <body {{_onload}}>
+    <!--ANALYTICS-->
+    script type='text/javascript' src='/js/facebook_analitics.js'
+    noscript: img(height='1' width='1' alt='' style='display:none'
+      src="https://www.facebook.com/tr?id=830351187019822&amp;ev=PixelInitialized")
+
+    script type='text/javascript' src='/js/yandex_metrika.js'
+    noscript: div: img src='//mc.yandex.ru/watch/30076844?ut=noindex' style='position:absolute; left:-9999px;' alt=''
+    <!--/ANALYTICS-->
+
+    .out.out_ind
+      == render('header')
+
+      noscript: h3.title.turn_on_js= t('js_required')
+      .wrapper: .center.center_mod
+        javascript:
+          $(document).ready(function () {
+            $('div#input_form').each(function () {
+              $(this).payment_form({
+                'form_type': 'loader_form'
+              });
+            });
+          });
+
+        h1.title_info_customer_page= t('waiter_title')
+        #input_form
+          #info_by_idle_transaction
+            p &nbsp;
+            p align='center' = t('please_wait')
+            p &nbsp;
+            p#spiner align='center'
+              img src='/images/spin.gif'
+          #info_by_hold_transaction
+            p &nbsp;
+            p align='center' = t('delay_description')
+        .c
+
+    == render('footer')
+  </body>

@@ -1,0 +1,18 @@
+header.header: .header_in
+  .logos.is_active
+    <!--MERCHANT_LOGO-->
+    / Сюда можно вставить свой логотип. И скопировать весь блок PAYMENT_CONTEXT в шаблон
+    <!--/MERCHANT_LOGO-->
+  .order: .order_in.js_header_order_info
+    .order_title= t('order_title')
+    .order_row
+      .order_left
+        .order_gray= t('order_total')
+        .order_price== amount_with_currency('{{amount}}', '{{currency}}', 10, :RUB)
+      .order_right
+        .order_gray= t('order_description')
+        .order_text.js_header_order_info_text
+          | {{description}}
+    a.order_more.js_header_order_info_more href="#" = t('more')
+    a.order_close.js_header_order_info_close href="#" = t('close')
+  .logo_platron

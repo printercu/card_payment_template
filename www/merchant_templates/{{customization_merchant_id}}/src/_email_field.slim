@@ -1,0 +1,7 @@
+label.checkbox.js_email_checkbox for="checkbox"
+  input#checkbox.js_email_send_checkbox type="checkbox"
+  span=< t('send_me_email')
+.form.form_mail.js_myemail: .form_item: .form_field
+  input.js_email_input(type="text" name="user_contact_email"
+    placeholder="ivanov@gmail.com" value="{{user_contact_email}}")
+  .form_text.form_text_nowrap= t('for_payment_tracking')

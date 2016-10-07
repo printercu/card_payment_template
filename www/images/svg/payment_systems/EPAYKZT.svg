@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="108px" height="23px" viewBox="0 0 108 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>payment-receipt copy 13</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="payment-receipt-copy-13" sketch:type="MSLayerGroup" transform="translate(0.500000, -1.500000)">
+            <g id="Page-1">
+                <g id="platron_payment-banks">
+                    <g id="Content">
+                        <g id="Оплата-квитанцией-в--+-Imported-Layers">
+                            <g id="Оплата-квитанцией-в-" transform="translate(39.000000, 0.000000)" font-family="Open Sans" fill="#333333" sketch:type="MSTextLayer" font-weight="normal">
+                                <text id="Оплата-" font-size="7.34313374">
+                                    <tspan x="0" y="8" fill="#000000">Оплата </tspan>
+                                </text>
+                                <text id="банковской-картой" font-size="7.343">
+                                    <tspan x="0" y="22" fill="#000000">банковской картой</tspan>
+                                </text>
+                            </g>
+                            <g id="Rectangle-4-+-Rectangle-5-Copy-3" transform="translate(0.000000, 2.000000)" sketch:type="MSShapeGroup">
+                                <rect id="Rectangle-4-Copy" stroke="#E2E2E2" x="4.17391304" y="4.13300746" width="27.2909699" height="16.6298525"></rect>
+                                <rect id="Rectangle-4" stroke="#8DC8D5" fill="#FFFFFF" x="0" y="0" width="27.2909699" height="16.6298525"></rect>
+                                <rect id="Rectangle-5" fill="#8DC8D5" x="0" y="2.90750689" width="27.2909699" height="3.69552278"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-close</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="platron_payment-global-error-popup" sketch:type="MSArtboardGroup" transform="translate(-743.000000, -210.000000)" fill-opacity="0.5" fill="#979898">
+            <g id="Popup-/-Postpone" sketch:type="MSLayerGroup" transform="translate(230.000000, 200.000000)">
+                <path d="M528.701389,10.3550213 C528.265999,9.91963937 527.559776,9.91963937 527.123244,10.3550213 L521.028931,16.4503682 L514.933475,10.3550213 C514.498085,9.91963937 513.791863,9.91963937 513.35533,10.3550213 C512.91994,10.7915459 512.91994,11.497756 513.35533,11.9331379 L519.450786,18.0284848 L513.35533,24.1238318 C512.91994,24.5592137 512.91994,25.2654237 513.35533,25.7019484 C513.791863,26.1373303 514.498085,26.1373303 514.933475,25.7019484 L521.028931,19.6066015 L527.123244,25.7019484 C527.559776,26.1373303 528.265999,26.1373303 528.701389,25.7019484 C529.137921,25.2654237 529.137921,24.5592137 528.701389,24.1238318 L522.607076,18.0284848 L528.701389,11.9331379 C529.137921,11.497756 529.137921,10.7915459 528.701389,10.3550213 L528.701389,10.3550213 Z" id="icon-close" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

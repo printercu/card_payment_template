@@ -1,0 +1,74 @@
+doctype Strict
+html xmlns='http://www.w3.org/1999/xhtml'
+  head
+    meta http-equiv='Content-Type' content='text/html; charset=utf-8'
+    title
+      = t('title')
+      |  :: {{_title}}
+    / Желательно оставить этот файл стилей и переопределить некоторые своими.
+    / Либо контент может отображаться некорректно.
+    link rel='stylesheet' media='all' href='/css/payment_params.css'
+
+    / link rel='stylesheet' media='all' href=css_path('your.css')
+    script type='text/javascript' src='/js/jquery.js'
+    script type='text/javascript' src='/js/jquery-ui.js'
+    script type='text/javascript' src='/js/header.js'
+
+  <body {{_onload}}>
+    <!--ANALYTICS-->
+    javascript:
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-79130225-1', 'auto');
+      ga('send', 'pageview');
+
+    <!-- Yandex.Metrika counter -->
+    javascript:
+      (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+          try {
+            w.yaCounter37866270 = new Ya.Metrika({
+              id: 37866270,
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true
+            });
+          } catch (e) {
+          }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () {
+              n.parentNode.insertBefore(s, n);
+            };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+          d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+          f();
+        }
+      })(document, window, "yandex_metrika_callbacks");
+    noscript: div: img src="https://mc.yandex.ru/watch/37866270" style="position:absolute; left:-9999px;" alt=""
+    <!-- /Yandex.Metrika counter -->
+    <!--/ANALYTICS-->
+
+    .out.out_ind
+      == render('header')
+      .wrapper: .center.center_mod
+       | {{_content}}
+    == render('footer')
+  </body>

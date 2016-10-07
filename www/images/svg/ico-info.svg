@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>Imported Layers 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M318,31 C313.6,31 310,34.6 310,39 C310,43.4 313.6,47 318,47 C322.4,47 326,43.4 326,39 C326,34.6 322.4,31 318,31 L318,31 Z M317.2,43 L318.8,43 L318.8,44.6 L317.2,44.6 L317.2,43 Z M320.48,38.44 L319.76,39.16 C319.12,39.72 318.8,40.2 318.8,41.4 L317.2,41.4 L317.2,41 C317.2,40.12 317.52,39.32 318.16,38.76 L319.12,37.72 C319.44,37.48 319.6,37.08 319.6,36.6 C319.6,35.72 318.88,35 318,35 C317.12,35 316.4,35.72 316.4,36.6 L314.8,36.6 C314.8,34.84 316.24,33.4 318,33.4 C319.76,33.4 321.2,34.84 321.2,36.6 C321.2,37.32 320.88,37.96 320.48,38.44 L320.48,38.44 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="platron_payment-card" sketch:type="MSArtboardGroup" transform="translate(-630.000000, -396.000000)">
+            <g id="Content" sketch:type="MSLayerGroup" transform="translate(30.000000, 100.000000)">
+                <g id="card" transform="translate(270.000000, 110.000000)">
+                    <g id="front">
+                        <g id="name" transform="translate(20.000000, 155.000000)">
+                            <g id="Imported-Layers-4">
+                                <use fill-opacity="0.75" fill="#00C7F4" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                                <use fill-opacity="0.147418478" fill="#000000" xlink:href="#path-1"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

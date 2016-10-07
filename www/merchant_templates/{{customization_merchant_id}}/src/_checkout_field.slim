@@ -1,0 +1,10 @@
+.checkout
+  .checkout_left
+    span.checkout_text= t('total_with_comission')
+    .price== amount_with_currency('{{ps_amount_to_pay}}', '{{ps_currency}}', 10, :RUB)
+    <!--DIFFERENT_CURRENCY-->
+    span.currency
+      == amount_with_currency('{{not_converted_amount_with_comission}}', '{{currency}}', 5, :USD)
+    <!--/DIFFERENT_CURRENCY-->
+  button.btn.btn_green type="submit"
+    span= t('pay_with_card')

@@ -1,0 +1,227 @@
+doctype html
+html
+  head
+    meta http-equiv='Content-Type' content='text/html; charset=utf-8'
+    title Platron :: {{description}}
+    meta name='viewport' content='width=device-width, initial-scale=1'
+    meta name='format-detection' content='telephone=no'
+
+    link rel='stylesheet' media='all' href='/css/payment_params.css'
+    / link rel='stylesheet' media='all' href=css_path('your.css')
+
+    script type='text/javascript' src='/js/jquery.js'
+    script type='text/javascript' src='/js/jquery-ui.js'
+    script type='text/javascript' src='/js/jquery.payment_form.js'
+    script type='text/javascript' src='/js/header.js'
+
+    script src='/bower/bower_components/hideShowPassword/hideShowPassword.js'
+
+    / INFO: Если хотите изменить способ отображения ошибок - нужно заменить этот блок блоком из setters.js
+    javascript:
+      $(document).ready(function () {
+        $('input[name="card_cvc"]').hidePassword(true);
+        var pluginParams = {};
+
+        pluginParams.form_type = 'card_form';
+        $('div#card_input_form').each(function () {
+          $(this).payment_form(pluginParams);
+        });
+        pluginParams.form_type = 'simple_form';
+        $('div#simple_input_form').each(function () {
+          $(this).payment_form(pluginParams);
+        });
+      });
+
+  body
+    .out.out_ind
+      == render('header')
+      noscript: h3.title.turn_on_js= t('js_required')
+      - unless release?
+        h3.title.test_mode Тестовый режим
+
+      .wrapper.wrapper_opted: .opted
+          button.btn_menu.js_menu
+          .opted_item.js_selected_tab_name
+
+      .wrapper.wrapper_tabs: .tabs.js_tab
+        ul.tabs_group.js_tab_catgories
+          <!--CATEGORY-->
+          - if release?
+            li.tabs_item: a.link href='#{{category_alias}}' {{category_name}}
+          - else
+            li.tabs_item: a.link href='#RUSSIANSTANDARD' Банковские карты
+            li.tabs_item: a.link href='#INTERNETBANK' Интернет банкинг
+          <!--/CATEGORY-->
+
+        <!--CONTAINER_BANKCARD-->
+        - category_alias = release? ? '{{category_alias}}' : 'RUSSIANSTANDARD'
+        #card_input_form.container.js_tab_content data-id='##{category_alias}'
+          h3.title
+            span.ico.ico_lock
+            = t('bank_card_title')
+          form#bank_form
+            input type='hidden' value='{{ps_name}}' id='ps_name'
+            .form.form_card
+              .bg_card
+              .bg_card.bg_card_cvv
+              .form_in
+                .form_col
+                  .form_label= t('card_number')
+                  .form_field
+                    / INFO: Выберите свой вариант вывода номера карты. Остальное удалить
+                    / Поменяйте условие (1|4):
+                    - case 1
+                    - when 1
+                      input name='card_num' type='text' placeholder='xxxx xxxx xxxx xxxx' maxlength='22'
+                    - when 4
+                      - (1..3).each do |i|
+                        input name="card_num_#{i}" type='text' class='card_num_inline' placeholder='xxxx' maxlength='4'
+                      input name='card_num_4' type='text' class='card_num_inline' placeholder='xxxx' maxlength='7'
+                  .info.js_input_field_info
+                    i.ico.ico_info.input_field_info_btn.js_input_field_info_btn
+                    .info_window= t('card_number_hint')
+
+                .form_col.form_col_small
+                  .form_label= t('card_exp')
+                  .form_row
+                    / INFO: Выберите свой вариант вывода номера карты. Остальное удалить
+                    / Поменяйте условие (1|2|:select):
+                    - case 2
+                    - when 2
+                      .form_field
+                        input type='text' name='exp_month' placeholder='01' maxlength='2' class='exp_date'
+                      span= '/'
+                      .form_field
+                        input type='text' name='exp_year' placeholder='20' maxlength='2' class='exp_date'
+                    - when 1
+                      .form_field
+                        input.card-date-solo-input type="text" name='exp_date' placeholder='YYXX' maxlength='4'
+                    - when :select
+                      .form_field.clearfix
+                        select.card-date name='exp_month'
+                          - if release?
+                            | {{select exp_month}}
+                          - else
+                            - (1..12).each do |i|
+                              - i = format('%02d', i)
+                              option.dimmed value=i = i
+                        select.card-date name='exp_year'
+                          - if release?
+                            | {{select exp_year}}
+                          - else
+                            - (2013..2023).each do |i|
+                              option.dimmed value=i = i
+                  .info.js_input_field_info
+                    i.ico.ico_info.input_field_info_btn.js_input_field_info_btn
+                    .info_window= t('card_exp_hint')
+
+                .form_col
+                  .form_label= t('cardholder')
+                  .form_field
+                    input type='text' name='name_on_card' placeholder=t('cardholder_placeholder') maxlength='256'
+                  .info.js_input_field_info
+                    i.ico.ico_info.input_field_info_btn.js_input_field_info_btn
+                    .info_window= t('cardholder_hint')
+
+                .form_col.form_col_cvv
+                  .form_label CVC/CVV
+                  .form_row: .form_field
+                    input type='password' name='card_cvc' placeholder='123' maxlength='4'
+                  .info.js_input_field_info
+                    i.ico.ico_info.input_field_info_btn.js_input_field_info_btn
+                    .info_window= t('cvc_hint')
+
+            / INFO: Раскомментировать, если планируется работать с GDS. Если нет - удалить блок
+            - if options.gds
+              <!--WITH_GDS_ONLY-->
+              .gds_block
+                .wiz-block
+                  ' Сумма счета
+                  == amount_with_currency('{{amount_whithout_commission}}', '{{ps_currency}}', 10, :RUB)
+                  br
+                  ' Агентский сбор
+                  == amount_with_currency('{{markup}}', '{{ps_currency}}', 10, :RUB)
+                  br
+                  | Внимание! Списение в два этапа!
+                  br
+                .info.js_input_field_info
+                  i.ico.ico_info.input_field_info_btn.js_input_field_info_btn
+                  .info_window.info_window_big
+                    | С целью повышения безопасности транзакций и снижения агентских
+                      сборов за оформление билетов мы разделяем один платеж на две части.
+                      1) Стоимость билета списывается с Вашей банковской картой
+                      непосредственно самой авиакомпанией.
+                      2) Агентский сбор списывается непосредственно нашим агентством.
+                      Обратите Ваше внимание на то, что данные банковской карты
+                      необходимо вводить только один раз.
+              <!--/WITH_GDS_ONLY-->
+
+            .accept
+              .accept_text= t('we_accept')
+              ul.accept_list
+                <!--CARD_TYPES-->
+                - if release?
+                  li: i.ico title='{{card_type_long}}'
+                    img.ico.ico_mps src='/images/svg/mps/{{card_type_short}}.svg' alt='{{card_type_long}}'
+                - else
+                  li: i.ico title='VISA'
+                    img.ico.ico_mps src='/images/svg/mps/VI.svg' alt='VISA'
+                  li: i.ico title='MASTERCARD'
+                    img.ico.ico_mps src='/images/svg/mps/CA.svg' alt='MASTERCARD'
+                <!--/CARD_TYPES-->
+              - if release?
+                input#accepted_card_brands type='hidden' value='{{accepted_card_brands}}'
+              - else
+                input#accepted_card_brands type='hidden' value='VI,CA'
+
+            == render('phone_field')
+            == render('email_field')
+            == render('checkout_field')
+        <!--/CONTAINER_BANKCARD-->
+
+        <!--CONTAINER_NOT_BANKCARD-->
+        - category_alias = release? ? '{{category_alias}}' : 'INTERNETBANK'
+        #simple_input_form.container.js_tab_content data-id="##{category_alias}"
+          form.js_not_card_form
+            .payment.js_payment_systems
+              .payment_in.js_payment_in
+                input type='hidden' value=(release? ? '{{ps_name}}' : 'SBRF') id='ps_name'
+                <!--NOT_BANKCARD_PAYMENT_SYSTEM-->
+                .payment_item.js_payment_system_item
+                  .js_hidden_ps_name= release? ? '{{payment_system_name}}' : 'SBRF'
+                  .payment_ico: span.ico
+                    - if release?
+                      img src='/images/svg/payment_systems/{{payment_system_name}}.svg' alt='img'
+                    - else
+                      img src='/images/svg/payment_systems/SBRF.svg' alt='SBRF'
+                  .price.js_inner_ps_price
+                    == amount_with_currency('{{ps_amount_to_pay}}', '{{ps_currency}}', 10, :RUB)
+                  <!--DIFFERENT_CURRENCY-->
+                  span.currency
+                    == amount_with_currency('{{not_converted_amount_with_comission}}', '{{currency}}', 5, :USD)
+                  <!--/DIFFERENT_CURRENCY-->
+                <!--/NOT_BANKCARD_PAYMENT_SYSTEM-->
+
+            == render('phone_field')
+            == render('email_field')
+            == render('checkout_field')
+        <!--/CONTAINER_NOT_BANKCARD-->
+
+      .overlay.js_overlay
+
+    == render('footer', postponed_payment: true)
+
+    <!--POSTPONED_PAYMENT-->
+    .popup.js_popup_postpone
+      .popup_in.js_popup_postpone_content
+        button.popup_btn_close.js_popup_pospone_close type='button'
+        .popup_title= t('postpone_title')
+        p= t('postpone_description')
+        .form: form method="POST"
+          .form_label E-mail
+          .form_field
+            input name="postpone_email" placeholder="ivanov@gmail.com" type="email" value="{{user_contact_email}}"
+          .form_bottom
+            button.btn.btn_white.js_popup_pospone_close type="button" = t('cancel')
+            button.btn.btn_green: span= t('send')
+    <!--/POSTPONED_PAYMENT-->

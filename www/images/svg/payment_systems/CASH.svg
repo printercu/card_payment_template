@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="120px" height="23px" viewBox="0 0 120 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>payment-receipt copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="payment-receipt-copy-3" sketch:type="MSLayerGroup" transform="translate(0.500000, -1.500000)">
+            <g id="Page-1">
+                <g id="platron_payment-banks">
+                    <g id="Content">
+                        <g id="Оплата-квитанцией-в--+-Imported-Layers">
+                            <g id="Оплата-квитанцией-в-" transform="translate(39.000000, 0.000000)" font-family="Open Sans" fill="#333333" sketch:type="MSTextLayer" font-weight="normal">
+                                <text id="Оплата-наличными-" font-size="7.34313374">
+                                    <tspan x="0" y="8" fill="#000000">Оплата наличными </tspan>
+                                </text>
+                                <text id="в-кассах-и-терминала" font-size="7.343">
+                                    <tspan x="0" y="22" fill="#000000">в кассах и терминалах</tspan>
+                                </text>
+                            </g>
+                            <g id="Rectangle-4-+-Rectangle-5-Copy-3" transform="translate(0.000000, 3.000000)">
+                                <g id="Rectangle-25-+-Oval-7-+-$">
+                                    <rect id="Rectangle-25" stroke="#979797" fill="#8DC8D5" sketch:type="MSShapeGroup" x="0" y="0" width="30" height="18"></rect>
+                                    <circle id="Oval-7" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="15" cy="9" r="6"></circle>
+                                    <text id="$" sketch:type="MSTextLayer" font-family="Helvetica Neue" font-size="9" font-weight="normal" fill="#000000">
+                                        <tspan x="12.5" y="12.1992188">$</tspan>
+                                    </text>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

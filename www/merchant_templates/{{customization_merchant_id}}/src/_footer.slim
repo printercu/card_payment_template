@@ -1,0 +1,19 @@
+footer.footer.footer_ind: .footer_in
+  .footer_row
+    - if locals[:postponed_payment]
+      .footer_left
+        <!--POSTPONED_PAYMENT-->
+        button.btn.btn_white.js_popup_pospone_open type='button' = t('postpone_payment')
+        <!--/POSTPONED_PAYMENT-->
+    .footer_right: .support
+      .support_row= t('support')
+      .support_row
+        p
+          strong> +7 (495) 983-32-79
+          | (#{t('24h')})
+          strong.support_col< support@platron.ru
+        .support_small= t('provider')
+  .footer_row: .footer_right
+    ul.security
+      li.security_item: i.ico: img src="/images/icons/comodo.png" alt="img"
+      li.security_item: i.ico: img src="/images/icons/thawte.png" alt="img"
