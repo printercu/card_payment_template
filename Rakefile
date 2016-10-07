@@ -67,7 +67,9 @@ module TemplateProcessor
     end
 
     def render
-      templates.each(&:render)
+      template_options[:i18n].each_key do |locale|
+        templates.each { |x| x.render_and_save(locale) }
+      end
     end
 
     def symlink(locale)
@@ -77,7 +79,7 @@ module TemplateProcessor
     def templates
       # dont use glob 'cause of {} in dirnames
       @templates ||= path.join('src').children.
-        select { |x| x.to_s.end_with?('.slim') }.
+        select { |x| x.to_s.end_with?('.slim') && !x.basename.to_s.start_with?('_') }.
         map { |x| Template.new x, template_options }
     end
 
@@ -105,13 +107,17 @@ module TemplateProcessor
     end
 
     # Render and write file for every locale.
-    def render
-      options.i18n.each_key do |locale|
-        context = Context.new(options, locale)
-        result = Slim::Template.new(path, slim_options).render(context)
-        result << "\n" unless result.end_with?("\n")
-        File.write(html_path(locale), result)
-      end
+    def render(locale, locals = {})
+      context = Context.new(options, locale, self)
+      slim_template = Slim::Template.new(path, **slim_options)
+      result = slim_template.render(context, locals)
+      result << "\n" unless result.end_with?("\n")
+      result
+    end
+
+    def render_and_save(locale, *args)
+      content = render(locale, *args)
+      File.write(html_path(locale), content)
     end
 
     # Create symlinks in www.
@@ -131,7 +137,7 @@ module TemplateProcessor
     end
   end
 
-  class Context < Struct.new(:options, :locale)
+  class Context < Struct.new(:options, :locale, :template)
     delegate :env, :i18n, :merchant_id, to: :options
     delegate :release?, to: :env
 
@@ -147,6 +153,26 @@ module TemplateProcessor
     def image_path(path)
       "merchant_templates/#{merchant_id}/your_images/#{path}"
     end
+
+    def render(partial, locals = {})
+      partial_path = template.path.dirname.join "_#{partial}.slim"
+      Template.new(partial_path, options.to_h).render(locale, locals)
+    end
+
+    # Easily stub currencies in dev.
+    def amount_with_currency(amount, currency, amount_test = nil, currency_test = nil)
+      unless release?
+        amount = amount_test if amount_test
+        currency = currency_test if currency_test
+      end
+      "#{amount} <img src='/images/svg/currency/#{currency}.svg' alt='#{currency}'>"
+    end
+
+    def inspect
+      "<#{self.class.name}##{object_id}>"
+    end
+
+    alias_method :to_s, :inspect
   end
 end
 
