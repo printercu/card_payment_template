@@ -9,80 +9,97 @@ default_locale: ru
 
 i18n:
   en:
-    title: >
+    24h: (round the clock)
+    bank_card_title: Secure bank card payment
+    cancel: Cancel
+    card_exp: Period valid
+    card_exp_hint: Month and year of validity period
+    card_number: Card number
+    card_number_hint: 14-19 digits on card face
+    cardholder: Name on card
+    cardholder_hint: Name on card if isset or your name and surname latin
+    cardholder_placeholder: LATIN
+    close: Close
+    cvc_hint: 3 last digit on back of card
+    delay_description: >-
+      Processing of payment is late for the unknown reasons,
+      we ask to trace the status of payment in a private office
+      of shop or to address in a support service.
+    for_payment_tracking: For tracking of the status of payment
+    js_required: To process turn on javascript
+    more: More
+    order_description: 'Order description:'
+    order_title: Merchant {{MERCHANT_NAME}}
+    order_total: 'Amount:'
+    pay_with_card: Pay by card
+    phone_number: Phone number
+    phone_number_hint: >-
+      Phone number in the international format (only digits).
+      For example: 79031234567 or 380445430591
+    please_wait: >-
+      Wait for completion of operation.
+      On the termination you will be redirected on the site of shop where finish purchase process.
+    postpone_description: >-
+      Specify email on which the link will be sent,
+      having passed on which you will be able to finish payment to {{expire_date}}
+    postpone_payment: Postpone payment
+    postpone_title: Postpone payment
+    proceed_to_payment: Pay
+    provider: Service on money transfer appears JSC RNKO RIB
+    send: Send
+    send_me_email: Send information on payment to my e-mail
+    support: 'Support:'
+    title: >-
       Platron - universal system for online payments.
       Online payment system for internet shops. ::  Pay with bank card
+    total_with_comission: 'Amount with comission:'
+    waiter_title: Payment process
+    we_accept: Card types
   ru:
-    agent_fee: Агентский сбор
-    amount: Стоимость заказа
-    bill_amount: Стоимость заказа
-    card_number_error: Ошибка в номере карты
-    cardholder: ИМЯ И ФАМИЛИЯ ВЛАДЕЛЬЦА КАРТЫ латиницей
-    delay_description: Обработка платежа задерживается по неизвестным причинам,
-      просим отслеживать статус платежа в личном кабинете магазина
-      или обратиться в службу поддержки.
-    exp_date: Укажите срок действия карты
-    form_config_error: Неправельные натройки формы
-    gds_warning: >
-      Внимание! Стоимость билета и сумма агентского сбора будут списаны с
-      вашей банковской карты в два этапа!'
-    gds_why: Почему так?
-    header: Оплата банковской картой
-    month_placeholder: M
-    pay: Оплатить
-    please_wait: >
-      Дождитесь завершения операции оплаты по банковской карте.
-      По окончанию вы будете перенаправлены на сайт магазина, где завершите процесс покупки.
-    total: Итого
-    title: >
-      Платрон - универсальная система приема платежей на сайте.
-      Система электронных платежей для интернет магазинов.
-    what_is_it: Что это?
-    year_placeholder: Г
-    you_pay: Вы оплачиваете
-
-    card_number: Номер карты
-    card_number_hint: 14-19 цифр на лицевой стороне карты
-    card_exp: Срок действия
-    card_exp_hint: Месяц и год срока действия карты
-    cardholder: Имя и фамилия владельца карты
-    cardholder_placeholder: ЛАТИНИЦЕЙ
-    cardholder_hint: Как на лицевой стороне карты. Если на карте нет имени и фамилии, то укажите свои имя и фамилию латинскими буквами.
-    cvc_hint: 3 последние цифры на обратной стороне карты
-    we_accept: Мы принимаем
-    phone_number: Номер телефона
-    phone_number_hint: >-
-      Номер указывается в международном формате (только цифры).
-      Например: 79031234567 или 380445430591
-    for_payment_tracking: Нужен для отслеживания статуса платежа
-    send_me_email: Прислать на мой e-mail информацию об оплате
-    total_with_comission: 'Сумма с комиссией:'
-    pay_with_card: Оплатить картой
-    postpone_payment: Отложить оплату заказа
-    postpone_title: Отложить платеж
-    postpone_description: >-
-      Укажите email, на который будет выслана ссылка,
-      перейдя по которой Вы сможете завершить оплату до {{expire_date}}
+    24h: (круглосуточно)
     bank_card_title: Безопасная оплата банковской картой
     cancel: Отмена
-    send: Отправить
-    js_required: Для продолжения включите javascript
-    24h: (круглосуточно)
-    more: Подробнее
+    card_exp: Срок действия
+    card_exp_hint: Месяц и год срока действия карты
+    card_number: Номер карты
+    card_number_hint: 14-19 цифр на лицевой стороне карты
+    cardholder: Имя и фамилия владельца карты
+    cardholder_hint: Как на лицевой стороне карты. Если на карте нет имени и фамилии,
+      то укажите свои имя и фамилию латинскими буквами.
+    cardholder_placeholder: ЛАТИНИЦЕЙ
     close: Закрыть
-    order_title: Заказ в магазине {{MERCHANT_NAME}}
-    order_total: 'Сумма заказа:'
-    order_description: 'Описание заказа:'
-    suppoer: 'Служба поддержки:'
-    provider: Сервис по переводу денежных средств оказывается ООО РНКО «РИБ»
-    waiter_title: Процесс оплаты
-    please_wait: >-
-      Дождитесь завершения операции.
-      По окончанию вы будете перенаправлены на сайт магазина, где завершите процесс покупки.
-    title: >-
-      Платрон - универсальная система приема платежей на сайте.
-      Система электронных платежей для интернет магазинов.
+    cvc_hint: 3 последние цифры на обратной стороне карты
     delay_description: >-
       Обработка платежа задерживается по неизвестным причинам,
       просим отслеживать статус платежа в личном кабинете магазина
       или обратиться в службу поддержки.
+    for_payment_tracking: Нужен для отслеживания статуса платежа
+    js_required: Для продолжения включите javascript
+    more: Подробнее
+    order_description: 'Описание заказа:'
+    order_title: Заказ в магазине {{MERCHANT_NAME}}
+    order_total: 'Сумма заказа:'
+    pay_with_card: Оплатить картой
+    phone_number: Номер телефона
+    phone_number_hint: >-
+      Номер указывается в международном формате (только цифры).
+      Например: 79031234567 или 380445430591
+    please_wait: >-
+      Дождитесь завершения операции.
+      По окончанию вы будете перенаправлены на сайт магазина, где завершите процесс покупки.
+    postpone_description: >-
+      Укажите email, на который будет выслана ссылка,
+      перейдя по которой Вы сможете завершить оплату до {{expire_date}}
+    postpone_payment: Отложить оплату заказа
+    postpone_title: Отложить платеж
+    proceed_to_payment: Перейти к оплате
+    provider: Сервис по переводу денежных средств оказывается ООО РНКО «РИБ»
+    send: Отправить
+    send_me_email: Прислать на мой e-mail информацию об оплате
+    support: 'Служба поддержки:'
+    title: >-
+      Платрон - универсальная система приема платежей на сайте.
+      Система электронных платежей для интернет магазинов.
+    total_with_comission: 'Сумма с комиссией:'
+    waiter_title: Процесс оплаты
+    we_accept: Мы принимаем

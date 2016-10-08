@@ -181,23 +181,23 @@
                 </ul><input id="accepted_card_brands" type="hidden" value="VI,CA" />
               </div>
               <div class="form form_wrap">
-                <div class="form_item">
-                  <div class="form_label">
-                    Номер телефона
-                  </div>
-                  <div class="form_field">
-                    <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
-                    <div class="info js_input_field_info">
-                      <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
-                      <div class="info_window">
-                        Номер указывается в международном формате (только цифры). Например: 79031234567 или 380445430591
-                      </div>
+              <div class="form_item">
+                <div class="form_label">
+                  Номер телефона
+                </div>
+                <div class="form_field">
+                  <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
+                  <div class="info js_input_field_info">
+                    <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
+                    <div class="info_window">
+                      Номер указывается в международном формате (только цифры). Например: 79031234567 или 380445430591
                     </div>
                   </div>
-                  <div class="form_text form_text_nowrap">
-                    Нужен для отслеживания статуса платежа
-                  </div>
                 </div>
+                <div class="form_text form_text_nowrap">
+                  Нужен для отслеживания статуса платежа
+                </div>
+              </div>
                 <!--PS_ADDITIONAL_FIELD-->
                 <div class="form_item js_ps_additional_field">
                   <div class="form_label">
@@ -212,7 +212,7 @@
                 </div>
                 <!--/PS_ADDITIONAL_FIELD-->
               </div>
-              <label class="checkbox js_email_checkbox" for="checkbox"><input class="js_email_send_checkbox" id="checkbox" type="checkbox" /> <span>Прислать на мой e-mail информацию об оплате</span></label>
+              <label class="checkbox js_email_checkbox"><input class="js_email_send_checkbox" type="checkbox" /> <span>Прислать на мой e-mail информацию об оплате</span></label>
               <div class="form form_mail js_myemail">
                 <div class="form_item">
                   <div class="form_field">
@@ -233,7 +233,6 @@
                 </div>
                 <button class="btn btn_green" type="submit"><span>Оплатить картой</span></button>
               </div>
-              
             </form>
           </div>
           <!--/CONTAINER_BANKCARD--><!--CONTAINER_NOT_BANKCARD-->
@@ -243,11 +242,9 @@
                 <div class="payment_in js_payment_in">
                   <input id="ps_name" type="hidden" value="SBRF" /><!--NOT_BANKCARD_PAYMENT_SYSTEM-->
                   <div class="payment_item js_payment_system_item">
-                    <div class="js_hidden_ps_name">
-                      SBRF
-                    </div>
+                    <div class='js_hidden_ps_name'>SBRF</div>
                     <div class="payment_ico">
-                      <span class="ico"><img alt="SBRF" src="/images/svg/payment_systems/SBRF.svg" /></span>
+                      <span class="ico"><img alt="img" src="/images/svg/payment_systems/SBRF.svg" /></span>
                     </div>
                     <div class="price js_inner_ps_price">
                       10 <img src='/images/svg/currency/RUB.svg' alt='RUB'>
@@ -258,38 +255,40 @@
                 </div>
               </div>
               <div class="form form_wrap">
-                <div class="form_item">
-                  <div class="form_label">
-                    Номер телефона
-                  </div>
-                  <div class="form_field">
-                    <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
-                    <div class="info js_input_field_info">
-                      <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
-                      <div class="info_window">
-                        Номер указывается в международном формате (только цифры). Например: 79031234567 или 380445430591
-                      </div>
+              <div class="form_item">
+                <div class="form_label">
+                  Номер телефона
+                </div>
+                <div class="form_field">
+                  <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
+                  <div class="info js_input_field_info">
+                    <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
+                    <div class="info_window">
+                      Номер указывается в международном формате (только цифры). Например: 79031234567 или 380445430591
                     </div>
                   </div>
-                  <div class="form_text form_text_nowrap">
-                    Нужен для отслеживания статуса платежа
-                  </div>
                 </div>
+                <div class="form_text form_text_nowrap">
+                  Нужен для отслеживания статуса платежа
+                </div>
+              </div>
                 <!--PS_ADDITIONAL_FIELD-->
-                <div class="form_item js_ps_additional_field">
-                  <div class="form_label">
-                    {{param_name}}
-                  </div>
-                  <div class="form_field">
-                    <input data-is-required="{{is_required}}" name="{{param_id}}" pattern="{{reg_exp}}" placeholder="{{param_placeholder}}" type="text" value="{{param_value}}" />
-                  </div>
-                  <div class="form_text">
-                    {{param_description}}
+                <div class="form_item ps_additional_field js_ps_additional_field SBRF">
+                  <div class="js_form_item_ps_additional">
+                    <div class="form_label">
+                      {{param_name}}
+                    </div>
+                    <div class="form_field">
+                      <input data-is-required="{{is_required}}" name="{{param_id}}" pattern="{{reg_exp}}" placeholder="{{param_placeholder}}" type="text" value="{{param_value}}" />
+                    </div>
+                    <div class="form_text">
+                      {{param_description}}
+                    </div>
                   </div>
                 </div>
                 <!--/PS_ADDITIONAL_FIELD-->
               </div>
-              <label class="checkbox js_email_checkbox" for="checkbox"><input class="js_email_send_checkbox" id="checkbox" type="checkbox" /> <span>Прислать на мой e-mail информацию об оплате</span></label>
+              <label class="checkbox js_email_checkbox"><input class="js_email_send_checkbox" type="checkbox" /> <span>Прислать на мой e-mail информацию об оплате</span></label>
               <div class="form form_mail js_myemail">
                 <div class="form_item">
                   <div class="form_field">
@@ -300,17 +299,16 @@
                   </div>
                 </div>
               </div>
-              <div class="checkout">
+              <div class="checkout js_checkout">
                 <div class="checkout_left">
                   <span class="checkout_text">Сумма с комиссией:</span>
-                  <div class="price">
+                  <div class="price js_price">
                     10 <img src='/images/svg/currency/RUB.svg' alt='RUB'>
                   </div>
                   <!--DIFFERENT_CURRENCY--><span class="currency">5 <img src='/images/svg/currency/USD.svg' alt='USD'></span><!--/DIFFERENT_CURRENCY-->
                 </div>
-                <button class="btn btn_green" type="submit"><span>Оплатить картой</span></button>
+                <button class="btn btn_green" type="submit"><span>Перейти к оплате</span></button>
               </div>
-              
             </form>
           </div>
           <!--/CONTAINER_NOT_BANKCARD-->
@@ -327,7 +325,7 @@
           <div class="footer_right">
             <div class="support">
               <div class="support_row">
-                support
+                Служба поддержки:
               </div>
               <div class="support_row">
                 <p>

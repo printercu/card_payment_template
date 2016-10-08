@@ -95,7 +95,7 @@ html
                         input type='text' name='exp_year' placeholder='20' maxlength='2' class='exp_date'
                     - when 1
                       .form_field
-                        input.card-date-solo-input type="text" name='exp_date' placeholder='YYXX' maxlength='4'
+                        input.card-date-solo-input type='text' name='exp_date' placeholder='YYXX' maxlength='4'
                     - when :select
                       .form_field.clearfix
                         select.card-date name='exp_month'
@@ -174,13 +174,55 @@ html
               - else
                 input#accepted_card_brands type='hidden' value='VI,CA'
 
-            == render('phone_field')
-            == render('email_field')
-            == render('checkout_field')
+            - phone_field = ->
+              .form_item
+                .form_label= t('phone_number')
+                .form_field
+                  input.js_phone_number type='text' name='user_phone' placeholder='79031234567' value='{{user_phone}}'
+                  .info.js_input_field_info
+                    i.ico.ico_info.input_field_info_btn.js_input_field_info_btn
+                    .info_window= t('phone_number_hint')
+                .form_text.form_text_nowrap= t('for_payment_tracking')
+
+            - email_field = ->
+              label.checkbox.js_email_checkbox
+                input.js_email_send_checkbox type='checkbox'
+                span=< t('send_me_email')
+              .form.form_mail.js_myemail: .form_item: .form_field
+                input.js_email_input(type='text' name='user_contact_email'
+                  placeholder="ivanov@gmail.com" value="{{user_contact_email}}")
+                .form_text.form_text_nowrap= t('for_payment_tracking')
+
+            .form.form_wrap
+              - phone_field.call
+              <!--PS_ADDITIONAL_FIELD-->
+              .form_item.js_ps_additional_field
+                .form_label
+                  | {{param_name}}
+                .form_field
+                  input(type='text' name='{{param_id}}' placeholder='{{param_placeholder}}'
+                    pattern="{{reg_exp}}" data-is-required="{{is_required}}" value="{{param_value}}")
+                .form_text
+                  | {{param_description}}
+              <!--/PS_ADDITIONAL_FIELD-->
+
+            - email_field.call
+
+            .checkout
+              .checkout_left
+                span.checkout_text= t('total_with_comission')
+                .price== amount_with_currency('{{ps_amount_to_pay}}', '{{ps_currency}}', 10, :RUB)
+                <!--DIFFERENT_CURRENCY-->
+                span.currency
+                  == amount_with_currency('{{not_converted_amount_with_comission}}', '{{currency}}', 5, :USD)
+                <!--/DIFFERENT_CURRENCY-->
+              button.btn.btn_green type='submit'
+                span= t('pay_with_card')
         <!--/CONTAINER_BANKCARD-->
 
         <!--CONTAINER_NOT_BANKCARD-->
         - category_alias = release? ? '{{category_alias}}' : 'INTERNETBANK'
+        - payment_system_name = release? ? '{{payment_system_name}}' : 'SBRF'
         #simple_input_form.container.js_tab_content data-id="##{category_alias}"
           form.js_not_card_form
             .payment.js_payment_systems
@@ -188,12 +230,10 @@ html
                 input type='hidden' value=(release? ? '{{ps_name}}' : 'SBRF') id='ps_name'
                 <!--NOT_BANKCARD_PAYMENT_SYSTEM-->
                 .payment_item.js_payment_system_item
-                  .js_hidden_ps_name= release? ? '{{payment_system_name}}' : 'SBRF'
+                  / Тут нельзя претипринтить ARGH!
+                  <div class='js_hidden_ps_name'>#{payment_system_name}</div>
                   .payment_ico: span.ico
-                    - if release?
-                      img src='/images/svg/payment_systems/{{payment_system_name}}.svg' alt='img'
-                    - else
-                      img src='/images/svg/payment_systems/SBRF.svg' alt='SBRF'
+                    img src="/images/svg/payment_systems/#{payment_system_name}.svg" alt='img'
                   .price.js_inner_ps_price
                     == amount_with_currency('{{ps_amount_to_pay}}', '{{ps_currency}}', 10, :RUB)
                   <!--DIFFERENT_CURRENCY-->
@@ -202,9 +242,32 @@ html
                   <!--/DIFFERENT_CURRENCY-->
                 <!--/NOT_BANKCARD_PAYMENT_SYSTEM-->
 
-            == render('phone_field')
-            == render('email_field')
-            == render('checkout_field')
+            .form.form_wrap
+              - phone_field.call
+              <!--PS_ADDITIONAL_FIELD-->
+              .form_item.ps_additional_field.js_ps_additional_field class=payment_system_name
+                .js_form_item_ps_additional
+                  .form_label
+                    | {{param_name}}
+                  .form_field
+                    input(type='text' name='{{param_id}}' placeholder='{{param_placeholder}}'
+                      pattern="{{reg_exp}}" data-is-required="{{is_required}}" value="{{param_value}}")
+                  .form_text
+                    | {{param_description}}
+              <!--/PS_ADDITIONAL_FIELD-->
+
+            - email_field.call
+
+            .checkout.js_checkout
+              .checkout_left
+                span.checkout_text= t('total_with_comission')
+                .price.js_price== amount_with_currency('{{ps_amount_to_pay}}', '{{ps_currency}}', 10, :RUB)
+                <!--DIFFERENT_CURRENCY-->
+                span.currency
+                  == amount_with_currency('{{not_converted_amount_with_comission}}', '{{currency}}', 5, :USD)
+                <!--/DIFFERENT_CURRENCY-->
+              button.btn.btn_green type='submit'
+                span= t('proceed_to_payment')
         <!--/CONTAINER_NOT_BANKCARD-->
 
       .overlay.js_overlay
@@ -217,11 +280,11 @@ html
         button.popup_btn_close.js_popup_pospone_close type='button'
         .popup_title= t('postpone_title')
         p= t('postpone_description')
-        .form: form method="POST"
+        .form: form method='POST'
           .form_label E-mail
           .form_field
-            input name="postpone_email" placeholder="ivanov@gmail.com" type="email" value="{{user_contact_email}}"
+            input name='postpone_email' placeholder='ivanov@gmail.com' type='email' value='{{user_contact_email}}'
           .form_bottom
-            button.btn.btn_white.js_popup_pospone_close type="button" = t('cancel')
+            button.btn.btn_white.js_popup_pospone_close type='button' = t('cancel')
             button.btn.btn_green: span= t('send')
     <!--/POSTPONED_PAYMENT-->

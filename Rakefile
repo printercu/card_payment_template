@@ -143,7 +143,7 @@ module TemplateProcessor
 
     # Simple translator.
     def t(key)
-      i18n[locale][key] || i18n[options.default_locale][key] || key
+      i18n[locale][key] || i18n[options.default_locale][key] or raise "Translation mising #{key}"
     end
 
     def css_path(path)

@@ -36,12 +36,12 @@
           <div class="order">
             <div class="order_in js_header_order_info">
               <div class="order_title">
-                Заказ в магазине {{MERCHANT_NAME}}
+                Merchant {{MERCHANT_NAME}}
               </div>
               <div class="order_row">
                 <div class="order_left">
                   <div class="order_gray">
-                    Сумма заказа:
+                    Amount:
                   </div>
                   <div class="order_price">
                     10 <img src='/images/svg/currency/RUB.svg' alt='RUB'>
@@ -49,14 +49,14 @@
                 </div>
                 <div class="order_right">
                   <div class="order_gray">
-                    Описание заказа:
+                    Order description:
                   </div>
                   <div class="order_text js_header_order_info_text">
                     {{description}}
                   </div>
                 </div>
               </div>
-              <a class="order_more js_header_order_info_more" href="#">Подробнее</a><a class="order_close js_header_order_info_close" href="#">Закрыть</a>
+              <a class="order_more js_header_order_info_more" href="#">More</a><a class="order_close js_header_order_info_close" href="#">Close</a>
             </div>
           </div>
           <div class="logo_platron"></div>
@@ -64,7 +64,7 @@
       </header>
       <noscript>
         <h3 class="title turn_on_js">
-          Для продолжения включите javascript
+          To process turn on javascript
         </h3>
       </noscript>
       <h3 class="title test_mode">
@@ -91,7 +91,7 @@
           <!--CONTAINER_BANKCARD-->
           <div class="container js_tab_content" data-id="#RUSSIANSTANDARD" id="card_input_form">
             <h3 class="title">
-              <span class="ico ico_lock"></span>Безопасная оплата банковской картой
+              <span class="ico ico_lock"></span>Secure bank card payment
             </h3>
             <form id="bank_form">
               <input id="ps_name" type="hidden" value="{{ps_name}}" />
@@ -101,7 +101,7 @@
                 <div class="form_in">
                   <div class="form_col">
                     <div class="form_label">
-                      Номер карты
+                      Card number
                     </div>
                     <div class="form_field">
                       <input maxlength="22" name="card_num" placeholder="xxxx xxxx xxxx xxxx" type="text" />
@@ -109,13 +109,13 @@
                     <div class="info js_input_field_info">
                       <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
                       <div class="info_window">
-                        14-19 цифр на лицевой стороне карты
+                        14-19 digits on card face
                       </div>
                     </div>
                   </div>
                   <div class="form_col form_col_small">
                     <div class="form_label">
-                      Срок действия
+                      Period valid
                     </div>
                     <div class="form_row">
                       <div class="form_field">
@@ -129,21 +129,21 @@
                     <div class="info js_input_field_info">
                       <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
                       <div class="info_window">
-                        Месяц и год срока действия карты
+                        Month and year of validity period
                       </div>
                     </div>
                   </div>
                   <div class="form_col">
                     <div class="form_label">
-                      Имя и фамилия владельца карты
+                      Name on card
                     </div>
                     <div class="form_field">
-                      <input maxlength="256" name="name_on_card" placeholder="ЛАТИНИЦЕЙ" type="text" />
+                      <input maxlength="256" name="name_on_card" placeholder="LATIN" type="text" />
                     </div>
                     <div class="info js_input_field_info">
                       <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
                       <div class="info_window">
-                        Как на лицевой стороне карты. Если на карте нет имени и фамилии, то укажите свои имя и фамилию латинскими буквами.
+                        Name on card if isset or your name and surname latin
                       </div>
                     </div>
                   </div>
@@ -159,7 +159,7 @@
                     <div class="info js_input_field_info">
                       <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
                       <div class="info_window">
-                        3 последние цифры на обратной стороне карты
+                        3 last digit on back of card
                       </div>
                     </div>
                   </div>
@@ -167,7 +167,7 @@
               </div>
               <div class="accept">
                 <div class="accept_text">
-                  Мы принимаем
+                  Card types
                 </div>
                 <ul class="accept_list">
                   <!--CARD_TYPES-->
@@ -181,23 +181,23 @@
                 </ul><input id="accepted_card_brands" type="hidden" value="VI,CA" />
               </div>
               <div class="form form_wrap">
-                <div class="form_item">
-                  <div class="form_label">
-                    Номер телефона
-                  </div>
-                  <div class="form_field">
-                    <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
-                    <div class="info js_input_field_info">
-                      <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
-                      <div class="info_window">
-                        Номер указывается в международном формате (только цифры). Например: 79031234567 или 380445430591
-                      </div>
+              <div class="form_item">
+                <div class="form_label">
+                  Phone number
+                </div>
+                <div class="form_field">
+                  <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
+                  <div class="info js_input_field_info">
+                    <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
+                    <div class="info_window">
+                      Phone number in the international format (only digits). For example: 79031234567 or 380445430591
                     </div>
                   </div>
-                  <div class="form_text form_text_nowrap">
-                    Нужен для отслеживания статуса платежа
-                  </div>
                 </div>
+                <div class="form_text form_text_nowrap">
+                  For tracking of the status of payment
+                </div>
+              </div>
                 <!--PS_ADDITIONAL_FIELD-->
                 <div class="form_item js_ps_additional_field">
                   <div class="form_label">
@@ -212,28 +212,27 @@
                 </div>
                 <!--/PS_ADDITIONAL_FIELD-->
               </div>
-              <label class="checkbox js_email_checkbox" for="checkbox"><input class="js_email_send_checkbox" id="checkbox" type="checkbox" /> <span>Прислать на мой e-mail информацию об оплате</span></label>
+              <label class="checkbox js_email_checkbox"><input class="js_email_send_checkbox" type="checkbox" /> <span>Send information on payment to my e-mail</span></label>
               <div class="form form_mail js_myemail">
                 <div class="form_item">
                   <div class="form_field">
                     <input class="js_email_input" name="user_contact_email" placeholder="ivanov@gmail.com" type="text" value="{{user_contact_email}}" />
                     <div class="form_text form_text_nowrap">
-                      Нужен для отслеживания статуса платежа
+                      For tracking of the status of payment
                     </div>
                   </div>
                 </div>
               </div>
               <div class="checkout">
                 <div class="checkout_left">
-                  <span class="checkout_text">Сумма с комиссией:</span>
+                  <span class="checkout_text">Amount with comission:</span>
                   <div class="price">
                     10 <img src='/images/svg/currency/RUB.svg' alt='RUB'>
                   </div>
                   <!--DIFFERENT_CURRENCY--><span class="currency">5 <img src='/images/svg/currency/USD.svg' alt='USD'></span><!--/DIFFERENT_CURRENCY-->
                 </div>
-                <button class="btn btn_green" type="submit"><span>Оплатить картой</span></button>
+                <button class="btn btn_green" type="submit"><span>Pay by card</span></button>
               </div>
-              
             </form>
           </div>
           <!--/CONTAINER_BANKCARD--><!--CONTAINER_NOT_BANKCARD-->
@@ -243,11 +242,9 @@
                 <div class="payment_in js_payment_in">
                   <input id="ps_name" type="hidden" value="SBRF" /><!--NOT_BANKCARD_PAYMENT_SYSTEM-->
                   <div class="payment_item js_payment_system_item">
-                    <div class="js_hidden_ps_name">
-                      SBRF
-                    </div>
+                    <div class='js_hidden_ps_name'>SBRF</div>
                     <div class="payment_ico">
-                      <span class="ico"><img alt="SBRF" src="/images/svg/payment_systems/SBRF.svg" /></span>
+                      <span class="ico"><img alt="img" src="/images/svg/payment_systems/SBRF.svg" /></span>
                     </div>
                     <div class="price js_inner_ps_price">
                       10 <img src='/images/svg/currency/RUB.svg' alt='RUB'>
@@ -258,59 +255,60 @@
                 </div>
               </div>
               <div class="form form_wrap">
-                <div class="form_item">
-                  <div class="form_label">
-                    Номер телефона
-                  </div>
-                  <div class="form_field">
-                    <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
-                    <div class="info js_input_field_info">
-                      <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
-                      <div class="info_window">
-                        Номер указывается в международном формате (только цифры). Например: 79031234567 или 380445430591
-                      </div>
+              <div class="form_item">
+                <div class="form_label">
+                  Phone number
+                </div>
+                <div class="form_field">
+                  <input class="js_phone_number" name="user_phone" placeholder="79031234567" type="text" value="{{user_phone}}" />
+                  <div class="info js_input_field_info">
+                    <i class="ico ico_info input_field_info_btn js_input_field_info_btn"></i>
+                    <div class="info_window">
+                      Phone number in the international format (only digits). For example: 79031234567 or 380445430591
                     </div>
                   </div>
-                  <div class="form_text form_text_nowrap">
-                    Нужен для отслеживания статуса платежа
-                  </div>
                 </div>
+                <div class="form_text form_text_nowrap">
+                  For tracking of the status of payment
+                </div>
+              </div>
                 <!--PS_ADDITIONAL_FIELD-->
-                <div class="form_item js_ps_additional_field">
-                  <div class="form_label">
-                    {{param_name}}
-                  </div>
-                  <div class="form_field">
-                    <input data-is-required="{{is_required}}" name="{{param_id}}" pattern="{{reg_exp}}" placeholder="{{param_placeholder}}" type="text" value="{{param_value}}" />
-                  </div>
-                  <div class="form_text">
-                    {{param_description}}
+                <div class="form_item ps_additional_field js_ps_additional_field SBRF">
+                  <div class="js_form_item_ps_additional">
+                    <div class="form_label">
+                      {{param_name}}
+                    </div>
+                    <div class="form_field">
+                      <input data-is-required="{{is_required}}" name="{{param_id}}" pattern="{{reg_exp}}" placeholder="{{param_placeholder}}" type="text" value="{{param_value}}" />
+                    </div>
+                    <div class="form_text">
+                      {{param_description}}
+                    </div>
                   </div>
                 </div>
                 <!--/PS_ADDITIONAL_FIELD-->
               </div>
-              <label class="checkbox js_email_checkbox" for="checkbox"><input class="js_email_send_checkbox" id="checkbox" type="checkbox" /> <span>Прислать на мой e-mail информацию об оплате</span></label>
+              <label class="checkbox js_email_checkbox"><input class="js_email_send_checkbox" type="checkbox" /> <span>Send information on payment to my e-mail</span></label>
               <div class="form form_mail js_myemail">
                 <div class="form_item">
                   <div class="form_field">
                     <input class="js_email_input" name="user_contact_email" placeholder="ivanov@gmail.com" type="text" value="{{user_contact_email}}" />
                     <div class="form_text form_text_nowrap">
-                      Нужен для отслеживания статуса платежа
+                      For tracking of the status of payment
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="checkout">
+              <div class="checkout js_checkout">
                 <div class="checkout_left">
-                  <span class="checkout_text">Сумма с комиссией:</span>
-                  <div class="price">
+                  <span class="checkout_text">Amount with comission:</span>
+                  <div class="price js_price">
                     10 <img src='/images/svg/currency/RUB.svg' alt='RUB'>
                   </div>
                   <!--DIFFERENT_CURRENCY--><span class="currency">5 <img src='/images/svg/currency/USD.svg' alt='USD'></span><!--/DIFFERENT_CURRENCY-->
                 </div>
-                <button class="btn btn_green" type="submit"><span>Оплатить картой</span></button>
+                <button class="btn btn_green" type="submit"><span>Pay</span></button>
               </div>
-              
             </form>
           </div>
           <!--/CONTAINER_NOT_BANKCARD-->
@@ -322,19 +320,19 @@
       <div class="footer_in">
         <div class="footer_row">
           <div class="footer_left">
-            <!--POSTPONED_PAYMENT--><button class="btn btn_white js_popup_pospone_open" type="button">Отложить оплату заказа</button><!--/POSTPONED_PAYMENT-->
+            <!--POSTPONED_PAYMENT--><button class="btn btn_white js_popup_pospone_open" type="button">Postpone payment</button><!--/POSTPONED_PAYMENT-->
           </div>
           <div class="footer_right">
             <div class="support">
               <div class="support_row">
-                support
+                Support:
               </div>
               <div class="support_row">
                 <p>
-                  <strong>+7 (495) 983-32-79</strong> ((круглосуточно)) <strong class="support_col">support@platron.ru</strong>
+                  <strong>+7 (495) 983-32-79</strong> ((round the clock)) <strong class="support_col">support@platron.ru</strong>
                 </p>
                 <div class="support_small">
-                  Сервис по переводу денежных средств оказывается ООО РНКО «РИБ»
+                  Service on money transfer appears JSC RNKO RIB
                 </div>
               </div>
             </div>
@@ -359,10 +357,10 @@
       <div class="popup_in js_popup_postpone_content">
         <button class="popup_btn_close js_popup_pospone_close" type="button"></button>
         <div class="popup_title">
-          Отложить платеж
+          Postpone payment
         </div>
         <p>
-          Укажите email, на который будет выслана ссылка, перейдя по которой Вы сможете завершить оплату до {{expire_date}}
+          Specify email on which the link will be sent, having passed on which you will be able to finish payment to {{expire_date}}
         </p>
         <div class="form">
           <form method="POST">
@@ -373,7 +371,7 @@
               <input name="postpone_email" placeholder="ivanov@gmail.com" type="email" value="{{user_contact_email}}" />
             </div>
             <div class="form_bottom">
-              <button class="btn btn_white js_popup_pospone_close" type="button">Отмена</button><button class="btn btn_green"><span>Отправить</span></button>
+              <button class="btn btn_white js_popup_pospone_close" type="button">Cancel</button><button class="btn btn_green"><span>Send</span></button>
             </div>
           </form>
         </div>
